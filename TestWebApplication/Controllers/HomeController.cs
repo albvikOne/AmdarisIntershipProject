@@ -3,14 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TestWebApplication.Models;
 
 namespace TestWebApplication.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
-            return View();
+            var customers = from m in db.Customer
+                         select m;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                customers = customers.Where(s => s.customerName.Contains(searchString));
+            }
+
+            return View(customers);
         }
 
         public ActionResult About()
