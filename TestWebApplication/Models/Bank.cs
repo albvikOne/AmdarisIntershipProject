@@ -11,7 +11,8 @@ namespace TestWebApplication.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Bank
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,7 +22,13 @@ namespace TestWebApplication.Models
         }
     
         public int bankID { get; set; }
+
+        [Required]
+        [StringLength(20)]
         public string bankName { get; set; }
+
+        [Required]
+        [StringLength(50)]
         public string bankLocation { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

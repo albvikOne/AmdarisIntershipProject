@@ -11,7 +11,8 @@ namespace TestWebApplication.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Account
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,7 +22,15 @@ namespace TestWebApplication.Models
         }
     
         public int accountID { get; set; }
+
+        [Required]
+        [StringLength(20)]
         public string accountType { get; set; }
+
+
+        [Required]
+        [Range(100, 100000000000)]
+        [DataType(DataType.Currency)]
         public int sum { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

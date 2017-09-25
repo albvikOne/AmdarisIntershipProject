@@ -14,12 +14,26 @@ namespace TestWebApplication.Controllers
     {
         private BankingSystemV3Entities db = new BankingSystemV3Entities();
 
-        // GET: Customers
-        public ActionResult Index()
+
+        public ActionResult Index(string searchString)
         {
-            var customers = db.Customers.Include(c => c.Account).Include(c => c.Bank);
-            return View(customers.ToList());
+            var customers = from m in db.Customers
+                            select m;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                customers = customers.Where(s => s.customerName.Contains(searchString));
+            }
+
+            return View(customers);
         }
+
+        //// GET: Customers
+        //public ActionResult Index()
+        //{
+        //    var customers = db.Customers.Include(c => c.Account).Include(c => c.Bank);
+        //    return View(customers.ToList());
+        //}
 
         // GET: Customers/Details/5
         public ActionResult Details(int? id)

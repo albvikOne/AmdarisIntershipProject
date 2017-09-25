@@ -9,18 +9,13 @@ namespace TestWebApplication.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index(string searchString)
+        public ActionResult Index()
         {
-            var customers = from m in db.Customer
-                         select m;
+            ViewBag.Message = "Your application index page.";
 
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                customers = customers.Where(s => s.customerName.Contains(searchString));
-            }
-
-            return View(customers);
+            return View();
         }
+
 
         public ActionResult About()
         {

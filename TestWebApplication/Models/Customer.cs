@@ -11,15 +11,35 @@ namespace TestWebApplication.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Customer
     {
         public int customerID { get; set; }
+
+        [Required]
+        [StringLength(20, MinimumLength = 3)]
         public string customerName { get; set; }
+
+        [Required]
+        [StringLength(20, MinimumLength = 3)]
         public string customerSurname { get; set; }
+
+        [Required]
+        [StringLength(50, MinimumLength = 5)]
         public string customerAddress { get; set; }
+
+
+        [Required]
+        [Range(1, 999999999999)]
         public int customerPhone { get; set; }
+
+
+        [Required]
+        [Range(1, 100)]
+        [DataType(DataType.Currency)]
         public int customerAccNo { get; set; }
+
         public int accountID { get; set; }
         public int bankID { get; set; }
     

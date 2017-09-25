@@ -13,7 +13,9 @@ namespace TestWebApplication.Controllers
     public class AccountsController : Controller
     {
         private BankingSystemV3Entities db = new BankingSystemV3Entities();
-       
+
+      
+
         // GET: Accounts
         public ActionResult Index()
         {
