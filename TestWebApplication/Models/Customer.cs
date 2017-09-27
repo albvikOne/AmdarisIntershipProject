@@ -15,30 +15,38 @@ namespace TestWebApplication.Models
 
     public partial class Customer
     {
+
+
         public int customerID { get; set; }
 
         [Required]
-        [StringLength(20, MinimumLength = 3)]
+        [StringLength(20, MinimumLength = 2)]
         public string customerName { get; set; }
+
 
         [Required]
         [StringLength(20, MinimumLength = 3)]
         public string customerSurname { get; set; }
+
 
         [Required]
         [StringLength(50, MinimumLength = 5)]
         public string customerAddress { get; set; }
 
 
-        [Required]
-        [Range(1, 999999999999)]
+
+        [Required(ErrorMessage = "Your must provide a PhoneNumber")]
+        [Display(Name = "Home Phone")]
+        [DataType(DataType.PhoneNumber)]
+        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid Phone number")]
         public int customerPhone { get; set; }
 
 
-        [Required]
-        [Range(1, 100)]
-        [DataType(DataType.Currency)]
+
+        [Required(ErrorMessage = "Your must provide a which th your account number is")]
+        [StringLength(30)]
         public int customerAccNo { get; set; }
+
 
         public int accountID { get; set; }
         public int bankID { get; set; }

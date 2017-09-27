@@ -24,12 +24,12 @@ namespace TestWebApplication.Models
         public int accountID { get; set; }
 
         [Required]
-        [StringLength(20)]
+        [StringLength(50, MinimumLength = 5)]
         public string accountType { get; set; }
 
 
         [Required]
-        [Range(100, 100000000000)]
+        [Range(100, 1000000000000)]
         [DataType(DataType.Currency)]
         public int sum { get; set; }
     
